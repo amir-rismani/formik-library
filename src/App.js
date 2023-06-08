@@ -6,7 +6,8 @@ import './App.css';
 const initialValues = {
   name: "",
   email: "",
-  password: ""
+  phone: "",
+  password: "",
 }
 
 // 2. Handle submittion
@@ -26,6 +27,7 @@ const onSubmit = (values) => {
 const validationSchema = Yup.object({
   name: Yup.string().required(),
   email: Yup.string().email().required(),
+  phone: Yup.string().required().matches(/^09[0-9]{9}$/, 'phone is invalid'),
   password: Yup.string().required().min(6),
 });
 function App() {
@@ -43,6 +45,11 @@ function App() {
           <label htmlFor='email'>Email</label>
           <input name='email' {...formik.getFieldProps('email')} />
           {formik.errors.email && formik.touched.email && <small className='error'>{formik.errors.email}</small>}
+        </div>
+        <div className='formGroup'>
+          <label htmlFor='phone'>Phone</label>
+          <input name='phone' {...formik.getFieldProps('phone')} />
+          {formik.errors.phone && formik.touched.phone && <small className='error'>{formik.errors.phone}</small>}
         </div>
         <div className='formGroup'>
           <label htmlFor='password'>Password</label>
