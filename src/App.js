@@ -7,12 +7,14 @@ const initialValues = {
   password: ""
 }
 function App() {
-  const formik = useFormik({ initialValues })
-  console.log(formik);
+  const onSubmit = (values) => {
+    console.log(values);
+  }
+  const formik = useFormik({ initialValues, onSubmit })
   return (
     <div className="App">
       <h1>Signup</h1>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <div className='formGroup'>
           <label htmlFor='name'>Name</label>
           <input value={formik.values.name} name='name' onChange={formik.handleChange} />
