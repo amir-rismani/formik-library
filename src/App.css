@@ -39,3 +39,7 @@ button{
   padding: 10px 15px;
   margin: 1rem auto;
 }
+
+.error{
+  color: red;
+}
