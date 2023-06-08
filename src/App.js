@@ -1,5 +1,6 @@
 
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import './App.css';
 // 1. State managment
 const initialValues = {
@@ -14,15 +15,21 @@ const onSubmit = (values) => {
 }
 
 // 3. Handle validation
-const validate = (values) => {
-  const errors = {};
-  if (!values.name) errors.name = 'Name is required!'
-  if (!values.email) errors.email = 'Email is required!'
-  if (!values.password) errors.password = 'Password is required!'
-  return errors
-}
+// const validate = (values) => {
+//   const errors = {};
+//   if (!values.name) errors.name = 'Name is required!'
+//   if (!values.email) errors.email = 'Email is required!'
+//   if (!values.password) errors.password = 'Password is required!'
+//   return errors
+// }
+
+const validationSchema = Yup.object({
+  name: Yup.string().required(),
+  email: Yup.string().email().required(),
+  password: Yup.string().required().min(6),
+});
 function App() {
-  const formik = useFormik({ initialValues, onSubmit, validate })
+  const formik = useFormik({ initialValues, onSubmit, validationSchema })
   return (
     <div className="App">
       <h1>Signup</h1>
