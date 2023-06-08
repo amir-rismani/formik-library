@@ -36,17 +36,17 @@ function App() {
       <form onSubmit={formik.handleSubmit}>
         <div className='formGroup'>
           <label htmlFor='name'>Name</label>
-          <input value={formik.values.name} name='name' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          <input name='name' {...formik.getFieldProps('name')} />
           {formik.errors.name && formik.touched.name && <small className='error'>{formik.errors.name}</small>}
         </div>
         <div className='formGroup'>
           <label htmlFor='email'>Email</label>
-          <input value={formik.values.email} name='email' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          <input name='email' {...formik.getFieldProps('email')} />
           {formik.errors.email && formik.touched.email && <small className='error'>{formik.errors.email}</small>}
         </div>
         <div className='formGroup'>
           <label htmlFor='password'>Password</label>
-          <input value={formik.values.password} name='password' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          <input name='password' {...formik.getFieldProps('password')} />
           {formik.errors.password && formik.touched.password && <small className='error'>{formik.errors.password}</small>}
         </div>
         <button type='submit'>Register</button>
