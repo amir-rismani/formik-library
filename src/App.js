@@ -30,13 +30,13 @@ const validationSchema = Yup.object({
   email: Yup.string().email().required(),
   phone: Yup.string().required().matches(/^09[0-9]{9}$/, 'phone is invalid'),
   password: Yup.string().required().matches(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})$/,
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
   ),
   passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
 });
 function App() {
-  const formik = useFormik({ initialValues, onSubmit, validationSchema })
+  const formik = useFormik({ initialValues, onSubmit, validationSchema, validateOnMount: true })
   return (
     <div className="App">
       <h1>Signup</h1>
@@ -67,7 +67,7 @@ function App() {
           {formik.errors.passwordConfirmation && formik.touched.passwordConfirmation && <small className='error'>{formik.errors.passwordConfirmation}</small>}
         </div>
 
-        <button type='submit'>Register</button>
+        <button type='submit' disabled={!formik.isValid}>Register</button>
       </form>
     </div>
   );

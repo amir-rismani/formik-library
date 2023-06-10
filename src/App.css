@@ -40,6 +40,10 @@ button{
   margin: 1rem auto;
 }
 
+button:disabled{
+    background-color:gray;
+    cursor: not-allowed;
+}
 .error{
   color: red;
 }
