@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Amir",
+            "email": "amir@ex.com",
+            "phone": "09123456789",
+            "password": "@Qwsa1234!",
+            "passwordConfirmation": "@Qwsa1234!",
+            "gender": "male"
+        }
+    ]
+}
