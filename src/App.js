@@ -4,15 +4,7 @@ import * as Yup from 'yup';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const saveValues = {
-  name: "Amir",
-  email: "amir@ex.com",
-  phone: "09123456789",
-  password: "@Qwsa1234!",
-  passwordConfirmation: "@Qwsa1234!",
-  gender: "male"
-}
+import Input from './components/common/Input/Input';
 
 // 1. State managment
 const initialValues = {
@@ -61,31 +53,12 @@ function App() {
     <div className="App">
       <h1>Signup</h1>
       <form onSubmit={formik.handleSubmit}>
-        <div className='formGroup'>
-          <label htmlFor='name'>Name</label>
-          <input type='text' id='name' name='name' {...formik.getFieldProps('name')} />
-          {formik.errors.name && formik.touched.name && <small className='error'>{formik.errors.name}</small>}
-        </div>
-        <div className='formGroup'>
-          <label htmlFor='email'>Email</label>
-          <input type='email' id='email' name='email' {...formik.getFieldProps('email')} />
-          {formik.errors.email && formik.touched.email && <small className='error'>{formik.errors.email}</small>}
-        </div>
-        <div className='formGroup'>
-          <label htmlFor='phone'>Phone</label>
-          <input type='text' id='phone' name='phone' {...formik.getFieldProps('phone')} />
-          {formik.errors.phone && formik.touched.phone && <small className='error'>{formik.errors.phone}</small>}
-        </div>
-        <div className='formGroup'>
-          <label htmlFor='password'>Password</label>
-          <input type='password' id='password' name='password' {...formik.getFieldProps('password')} />
-          {formik.errors.password && formik.touched.password && <small className='error'>{formik.errors.password}</small>}
-        </div>
-        <div className='formGroup'>
-          <label htmlFor='passwordConfirmation'>Password Confirmation</label>
-          <input type='password' id='passwordConfirmation' name='passwordConfirmation' {...formik.getFieldProps('passwordConfirmation')} />
-          {formik.errors.passwordConfirmation && formik.touched.passwordConfirmation && <small className='error'>{formik.errors.passwordConfirmation}</small>}
-        </div>
+        <Input label="Name" name="name" formik={formik} />
+        <Input label="Email" name="email" type="email" formik={formik} />
+        <Input label="Phone" name="phone" formik={formik} />
+        <Input label="Password" name="password" type="password" formik={formik} />
+        <Input label="Password Confirmation" name="passwordConfirmation" type="password" formik={formik} />
+
         <div className='formGroup'>
           <input type='radio' id="male" name='gender' value="mail" onChange={formik.handleChange} checked={formik.values.gender === "male"} />
           <label htmlFor='male'>Male</label>

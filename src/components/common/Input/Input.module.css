@@ -1,0 +1,29 @@
+.formControl {
+    margin-bottom: .5rem;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}
+
+input+label {
+    display: inline-flex;
+    margin-right: 1rem;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    width: 250px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: large;
+    padding: 5px;
+    outline: none;
+}
+
+input:focus {
+    border-color: cadetblue;
+}
