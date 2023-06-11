@@ -8,11 +8,6 @@ label {
     display: block;
 }
 
-input+label {
-    display: inline-flex;
-    margin-right: 1rem;
-}
-
 input[type=text],
 input[type=password],
 input[type=email] {

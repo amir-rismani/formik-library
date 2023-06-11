@@ -5,6 +5,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Input from './components/common/Input/Input';
+import RadioGroup from './components/common/RadioGroup/RadioGroup';
 
 // 1. State managment
 const initialValues = {
@@ -41,6 +42,12 @@ const validationSchema = Yup.object({
   passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
   gender: Yup.string().required()
 });
+
+const genders = [
+  { label: 'Male', value: 'male', },
+  { label: 'Female', value: 'female', }
+];
+
 function App() {
   const [saveData, setSaveData] = useState(null);
   const formik = useFormik({ initialValues: saveData || initialValues, onSubmit, validationSchema, validateOnMount: true, enableReinitialize: true });
@@ -58,14 +65,7 @@ function App() {
         <Input label="Phone" name="phone" formik={formik} />
         <Input label="Password" name="password" type="password" formik={formik} />
         <Input label="Password Confirmation" name="passwordConfirmation" type="password" formik={formik} />
-
-        <div className='formGroup'>
-          <input type='radio' id="male" name='gender' value="mail" onChange={formik.handleChange} checked={formik.values.gender === "male"} />
-          <label htmlFor='male'>Male</label>
-          <input type='radio' id="female" name='gender' value="femail" onChange={formik.handleChange} checked={formik.values.gender === "female"} />
-          <label htmlFor='female'>Female</label>
-          {formik.errors.gender && formik.touched.gender && <small className='error'>{formik.errors.gender}</small>}
-        </div>
+        <RadioGroup radioOptions={genders} label="Gender" name="gender" formik={formik} />
         <button type='submit' disabled={!formik.isValid}>Register</button>
       </form>
     </div>

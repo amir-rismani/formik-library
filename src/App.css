@@ -6,6 +6,14 @@
   align-items: center;
   height: 100vh;
 }
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+label{
+  text-align: left;
+}
 
 button{
   width: 100%;
