@@ -1,0 +1,9 @@
+.formControl {
+    margin: .5rem 0;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}

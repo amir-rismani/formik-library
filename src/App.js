@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Input from './components/common/Input/Input';
 import RadioGroup from './components/common/RadioGroup/RadioGroup';
+import Select from './components/common/Select/Select';
 
 // 1. State managment
 const initialValues = {
@@ -14,7 +15,8 @@ const initialValues = {
   phone: "",
   password: "",
   passwordConfirmation: "",
-  gender: ""
+  gender: "",
+  nationality: { label: 'Select a nationality', value: '' }
 }
 
 // 2. Handle submittion
@@ -40,13 +42,21 @@ const validationSchema = Yup.object({
     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
   ),
   passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
-  gender: Yup.string().required()
+  gender: Yup.string().required(),
+  nationality: Yup.object().required(),
 });
 
 const genders = [
-  { label: 'Male', value: 'male', },
-  { label: 'Female', value: 'female', }
+  { label: 'Male', value: 'male' },
+  { label: 'Female', value: 'female' }
 ];
+
+const nationality = [
+  { label: 'Select a nationality', value: '' },
+  { label: 'Iranian', value: 'IR' },
+  { label: 'American', value: 'US' },
+  { label: 'Italian', value: 'IT' }
+]
 
 function App() {
   const [saveData, setSaveData] = useState(null);
@@ -66,6 +76,7 @@ function App() {
         <Input label="Password" name="password" type="password" formik={formik} />
         <Input label="Password Confirmation" name="passwordConfirmation" type="password" formik={formik} />
         <RadioGroup radioOptions={genders} label="Gender" name="gender" formik={formik} />
+        <Select label="Nationality" name="nationality" formik={formik} options={nationality} />
         <button type='submit' disabled={!formik.isValid}>Register</button>
       </form>
     </div>

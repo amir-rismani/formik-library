@@ -1,4 +1,4 @@
-import Radio from "../Radio/Radio"
+import Radio from "./Radio/Radio"
 const RadioGroup = ({ radioOptions, label, name, formik }) => {
     return (
         <>
