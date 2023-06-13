@@ -7,3 +7,17 @@ label {
     font-weight: bold;
     display: block;
 }
+
+select {
+    width: 250px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: large;
+    padding: 5px;
+    outline: none;
+    background: none;
+}
+
+select:focus {
+    border-color: cadetblue;
+}

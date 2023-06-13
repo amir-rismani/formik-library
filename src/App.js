@@ -16,7 +16,9 @@ const initialValues = {
   password: "",
   passwordConfirmation: "",
   gender: "",
-  nationality: { label: 'Select a nationality', value: '' }
+  // used react-select
+  // nationality: { label: 'Select a nationality', value: '' }
+  nationality: ""
 }
 
 // 2. Handle submittion
@@ -43,7 +45,9 @@ const validationSchema = Yup.object({
   ),
   passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
   gender: Yup.string().required(),
-  nationality: Yup.object().required(),
+  // used react-select
+  // nationality: Yup.object().required(),
+  nationality: Yup.string().required(),
 });
 
 const genders = [
