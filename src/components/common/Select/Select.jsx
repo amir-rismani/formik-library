@@ -1,7 +1,7 @@
-import ReactSelect from 'react-select';
+// import ReactSelect from 'react-select';
 import styles from "./Select.module.css";
 
-const Select = ({ label, name, options, formik }) => {
+const Select = ({ label, name, options, formik, data }) => {
     return (
         <div className={styles.formControl}>
             <label>{label}</label>
@@ -13,7 +13,8 @@ const Select = ({ label, name, options, formik }) => {
                 onChange={(selectedOption) => formik.setFieldValue(name, selectedOption)}
                 onBlur={() => formik.setFieldTouched(name)}
             /> */}
-            <select name={name} {...formik.getFieldProps(name)}>
+            {/* selected={options.find(option => option.value === data[name] ? 'selected' : '')} */}
+            <select name={name} value={data[name] || formik.values[name]} onChange={formik.handleChange} onBlur={formik.handleBlur}>
                 {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
             {formik.errors[name] && formik.touched[name] && <small className='error'>{formik.errors[name]}</small>}
