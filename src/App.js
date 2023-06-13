@@ -7,6 +7,7 @@ import axios from 'axios';
 import Input from './components/common/Input/Input';
 import RadioGroup from './components/common/RadioGroup/RadioGroup';
 import Select from './components/common/Select/Select';
+import CheckBoxGroup from './components/common/CheckBoxGroup/CheckBoxGroup';
 
 // 1. State managment
 const initialValues = {
@@ -18,7 +19,8 @@ const initialValues = {
   gender: "",
   // used react-select
   // nationality: { label: 'Select a nationality', value: '' }
-  nationality: ""
+  nationality: "",
+  skills: []
 }
 
 // 2. Handle submittion
@@ -48,12 +50,24 @@ const validationSchema = Yup.object({
   // used react-select
   // nationality: Yup.object().required(),
   nationality: Yup.string().required(),
+  skills: Yup.array().min(1).required('at least select one skill'),
 });
 
 const genders = [
   { label: 'Male', value: 'male' },
   { label: 'Female', value: 'female' }
 ];
+
+const skills = [
+  { label: 'React.js', value: 'react.js' },
+  { label: 'Vue.js', value: 'vue.js' },
+  { label: 'JavaScript', value: 'javascript' },
+  { label: 'Node.js', value: 'node.js' },
+  { label: 'TailwindCSS', value: 'tailwindcss' },
+  { label: 'Next.js', value: 'next.js' },
+  { label: 'Nuxt.js', value: 'nuxt.js' },
+];
+
 
 const nationality = [
   { label: 'Select a nationality', value: '' },
@@ -81,6 +95,7 @@ function App() {
         <Input label="Password Confirmation" name="passwordConfirmation" type="password" formik={formik} />
         <RadioGroup radioOptions={genders} label="Gender" name="gender" formik={formik} />
         <Select label="Nationality" name="nationality" formik={formik} options={nationality} />
+        <CheckBoxGroup checkBoxOptions={skills} label="Skills" name="skills" formik={formik} />
         <button type='submit' disabled={!formik.isValid}>Register</button>
       </form>
     </div>
