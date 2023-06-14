@@ -1,4 +1,6 @@
 .formControl {
+    display: flex;
+    flex-direction: column;
     margin: .5rem 0;
     text-align: left;
 }
@@ -9,13 +11,13 @@ label {
 }
 
 select {
-    width: 250px;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: large;
     padding: 5px;
     outline: none;
     background: none;
+    flex-grow: 1;
 }
 
 select:focus {

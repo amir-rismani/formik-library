@@ -1,15 +1,21 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Amir",
-            "email": "amir@ex.com",
-            "phone": "09123456789",
-            "password": "@Qwsa1234!",
-            "passwordConfirmation": "@Qwsa1234!",
-            "gender": "male",
-            "nationality": "IR",
-            "skills": []
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Amir R",
+      "email": "amir@ex.com",
+      "phone": "09123456789",
+      "password": "@Qwsa1234!",
+      "passwordConfirmation": "@Qwsa1234!",
+      "gender": "male",
+      "nationality": "IR",
+      "skills": [
+        "react.js",
+        "vue.js",
+        "tailwindcss",
+        "nuxt.js",
+        "javascript"
+      ]
+    }
+  ]
 }

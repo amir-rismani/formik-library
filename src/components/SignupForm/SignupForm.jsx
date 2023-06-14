@@ -6,9 +6,7 @@ import CheckBoxGroup from "../common/CheckBoxGroup/CheckBoxGroup";
 import Input from "../common/Input/Input";
 import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Select from "../common/Select/Select";
-
 import styles from "./SignupForm.module.css";
-
 
 // 1. State managment
 const initialValues = {
@@ -26,7 +24,9 @@ const initialValues = {
 
 // 2. Handle submittion
 const onSubmit = (values) => {
-    console.log(values);
+    axios.put(`http://localhost:3001/users/1`, values)
+        .then(res => alert('Information has been successfully registered.'))
+        .catch(err => console.log(err));
 }
 
 // 3. Handle validation
@@ -69,7 +69,6 @@ const skills = [
     { label: 'Nuxt.js', value: 'nuxt.js' },
 ];
 
-
 const nationality = [
     { label: 'Select a nationality', value: "" },
     { label: 'Iranian', value: 'IR' },
@@ -80,6 +79,7 @@ const nationality = [
 const SignupForm = () => {
     const [saveData, setSaveData] = useState(null);
     const formik = useFormik({ initialValues: saveData || initialValues, onSubmit, validationSchema, validateOnMount: true, enableReinitialize: true });
+
     useEffect(() => {
         axios.get('http://localhost:3001/users/1')
             .then(res => setSaveData(res.data))
@@ -87,7 +87,7 @@ const SignupForm = () => {
     }, []);
 
     return (
-        <div className="App">
+        <div className={styles.signup}>
             <h1>Signup</h1>
             <form onSubmit={formik.handleSubmit}>
                 <Input label="Name" name="name" formik={formik} />
@@ -101,7 +101,6 @@ const SignupForm = () => {
                 <button type='submit' disabled={!formik.isValid}>Register</button>
             </form>
         </div>
-
     );
 }
 

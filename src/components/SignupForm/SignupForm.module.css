@@ -1,0 +1,11 @@
+.signup{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+@media screen and (max-width: 480px) {
+    .signup {
+        width: 90%;
+    }
+}

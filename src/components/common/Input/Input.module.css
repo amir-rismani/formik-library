@@ -1,6 +1,8 @@
 .formControl {
     margin-bottom: .5rem;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -11,12 +13,12 @@ label {
 input[type=text],
 input[type=password],
 input[type=email] {
-    width: 250px;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: large;
     padding: 5px;
     outline: none;
+    flex-grow: 1;
 }
 
 input:focus {
