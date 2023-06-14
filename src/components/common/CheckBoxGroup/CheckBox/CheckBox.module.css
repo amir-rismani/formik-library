@@ -1,5 +1,8 @@
 .formControl {
+    margin-right: 1rem;
+}
+
+.checkBoxContainer{
     text-align: left;
     display: inline-flex;
-    margin-right: 1rem;
 }

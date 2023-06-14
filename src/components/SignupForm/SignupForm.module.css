@@ -4,6 +4,10 @@
     width: 300px;
 }
 
+.mt1 {
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 480px) {
     .signup {
         width: 90%;

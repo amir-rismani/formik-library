@@ -10,12 +10,9 @@
       "gender": "male",
       "nationality": "IR",
       "skills": [
-        "react.js",
-        "vue.js",
-        "tailwindcss",
-        "nuxt.js",
-        "javascript"
-      ]
+        "node.js"
+      ],
+      "terms": true
     }
   ]
 }

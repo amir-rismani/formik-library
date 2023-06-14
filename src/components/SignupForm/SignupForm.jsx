@@ -7,6 +7,7 @@ import Input from "../common/Input/Input";
 import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Select from "../common/Select/Select";
 import styles from "./SignupForm.module.css";
+import CheckBox from '../common/CheckBoxGroup/CheckBox/CheckBox';
 
 // 1. State managment
 const initialValues = {
@@ -19,7 +20,8 @@ const initialValues = {
     // used react-select
     // nationality: { label: 'Select a nationality', value: '' }
     nationality: "",
-    skills: []
+    skills: [],
+    terms: false,
 }
 
 // 2. Handle submittion
@@ -51,7 +53,8 @@ const validationSchema = Yup.object({
     // used react-select
     // nationality: Yup.object().required(),
     nationality: Yup.string().required(),
-    skills: Yup.array().min(1).required('at least select one skill'),
+    skills: Yup.array().min(1).required('At least select one skill'),
+    terms: Yup.boolean().required().oneOf([true], "The terms and conditions must be accepted")
 });
 
 const genders = [
@@ -98,6 +101,7 @@ const SignupForm = () => {
                 <RadioGroup radioOptions={genders} label="Gender" name="gender" formik={formik} />
                 <Select label="Nationality" name="nationality" formik={formik} options={nationality} data={saveData || initialValues} />
                 <CheckBoxGroup checkBoxOptions={skills} label="Skills" name="skills" formik={formik} />
+                <CheckBox className={styles.mt1} option={{ label: "Terms and conditions", value: false }} name="terms" formik={formik} isFromGroup={false} />
                 <button type='submit' disabled={!formik.isValid}>Register</button>
             </form>
         </div>
